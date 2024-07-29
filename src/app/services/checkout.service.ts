@@ -38,7 +38,7 @@ export class CheckoutService {
   }
 
   openTransactionModal(response: any) {
-    // prepare options  => Like sendind headers
+    // prepare options  => Like sending headers
     const amount = Math.round(response.amount * 100);
     console.log(`amount=${amount}`);
     var options = {
@@ -52,7 +52,7 @@ export class CheckoutService {
       handler: (response: any) => {
         this.processResponse(response);
       },
-      prefills : {
+      prefill : {
         name: "Hello",
         email: "hello@gmail.com",
         contact: "5687685687566856"
@@ -72,7 +72,8 @@ export class CheckoutService {
   processResponse(resp: any) {
     console.log(resp);
     if(resp.razorpay_payment_id) {
-      this.modalResponseSubject.next({
+      console.log(resp.razorpay_payment_id);
+      this.modalResponseSubject.next({   // using the next method it will emit the data about success and the subscriber(this.checkoutService.modalResponse in checkout.component.ts) will catch it immediately 
         success: true,
         response: resp
       });

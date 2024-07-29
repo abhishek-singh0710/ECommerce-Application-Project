@@ -1,0 +1,17 @@
+*{
+    background-color: black;
+    color: white;
+}
+
+.main-content {
+    margin-top: 40px;
+}
+.form-area {
+    border: 5px solid rgb(69, 67, 67);
+    border-radius: 1.25rem;
+}
+.form-area h3 {
+    color: rgb(255, 255, 255);
+    background-color: rgb(36, 35, 35);
+    border-radius: 1.25rem;
+}

@@ -1,0 +1,123 @@
+/* Adjusted General Styles for Dark Theme */
+.main-content {
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    margin-top: 90px; /* Adjust this value based on your navbar height */
+}
+
+.section-content {
+    margin-bottom: 20px;
+}
+
+/* Navbar Styling (if needed) */
+.navbar {
+    position: fixed; /* Ensure navbar is fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure navbar is above other content */
+    background-color: #333; /* Adjust as needed */
+}
+
+/* Ensure content below navbar */
+.category-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.divider {
+    margin: 10px 0;
+    border-color: #444;
+}
+
+/* Product Box Styles */
+.product-box {
+    border: 1px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 15px;
+    text-align: center;
+    background-color: #2c2c2c;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.product-name {
+    font-size: 1.2rem;
+    color: #f5f5f5;
+    margin: 10px 0;
+    text-transform: capitalize;
+}
+
+.price {
+    font-size: 1.4rem;
+    color: #d4af37; /* Gold color for price to stand out */
+    margin-bottom: 15px;
+}
+
+.primary-btn {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.primary-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Pagination Styles */
+.footer-pagination {
+    margin-top: 20px;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.page-size-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.page-size-select {
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #333;
+    color: #f5f5f5;
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+    .product-box {
+        margin-bottom: 20px;
+    }
+
+    .pagination-container,
+    .page-size-container {
+        text-align: center;
+    }
+}

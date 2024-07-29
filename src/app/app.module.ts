@@ -32,6 +32,7 @@ import myAppConfig from './config/my-app-config';
 import { MembersPageComponent } from './components/members-page/members-page.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { RefundComponent } from './components/refund/refund.component';
 
 const oktaConfig = myAppConfig.oidc;
 
@@ -48,11 +49,16 @@ function sendToLoginPage(oktaAuth: OktaAuth, injector: Injector) {
 
 
 const routes: Routes = [
+  // {path: '/refund', component: RefundComponent, canActivate: [OktaAuthGuard],
+  //   data: { onAuthRequired: sendToLoginPage } },
+
   {path: 'order-history', component: OrderHistoryComponent, canActivate: [OktaAuthGuard],
     data: { onAuthRequired: sendToLoginPage } },
 
   {path: 'members', component: MembersPageComponent, canActivate: [OktaAuthGuard],
                     data: { onAuthRequired: sendToLoginPage } },
+
+  {path: 'refund', component: RefundComponent, canActivate: [OktaAuthGuard]},
 
   {path: 'login/callback', component: OktaCallbackComponent},
   {path: 'login', component: LoginComponent},
@@ -81,7 +87,8 @@ const routes: Routes = [
     LoginComponent,
     LoginStatusComponent,
     MembersPageComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    RefundComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

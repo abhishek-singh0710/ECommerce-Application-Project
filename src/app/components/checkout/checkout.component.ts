@@ -235,6 +235,7 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
+
   onSubmit() {
     console.log("Handling The Submit Button");
 
@@ -303,13 +304,14 @@ export class CheckoutComponent implements OnInit {
     // First call the transaction API If Successfull Then Call The Purchase API
     this.checkoutService.createTransaction(this.totalPrice).subscribe(
       (response) => {
-        console.log("Hello");
+        console.log("Hello here is the response");
         console.log(response);
         this.checkoutService.openTransactionModal(response);
         
         this.checkoutService.modalResponse.subscribe(
           (modalResponse) => {
             if(modalResponse.success) {
+              purchase.paymentId = modalResponse.response.razorpay_payment_id;
               this.checkoutService.placeOrder(purchase, this.totalPrice).subscribe(
                 {
                   next: response => {
@@ -342,6 +344,10 @@ export class CheckoutComponent implements OnInit {
     this.cartService.cartItems = [];
     this.cartService.totalPrice.next(0);     // Send the data 0 to the totalPrice and the totalQuantity Subscribers of the Subject for the totalPrice and the totalQuantity
     this.cartService.totalQuantity.next(0);
+
+    // This will be since after we place the order the cart items will be empty so we need to persist the cart items
+    // so that on reload also it remains empty so this will help in persisting the current state of the cart(empty) to the local storage
+    this.cartService.persistCartItems();
 
     // reset form data
     this.checkoutFormGroup.reset();

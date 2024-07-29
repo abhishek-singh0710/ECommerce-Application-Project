@@ -1,59 +1,49 @@
 <div class="main-content">
     <div class="section-content section-content-p30">
-        <h4>Category: {{ currentCategoryName }}</h4>
-        <hr>
+        <h4 class="category-title">Category: {{ currentCategoryName }}</h4>
+        <hr class="divider">
         
         <div class="container-fluid">
             <div class="row">
-
-                <!-- loop over the collection of products -->
-                <div *ngFor="let tempProduct of products" class="col-md-3">
-
+                <!-- Loop over the collection of products -->
+                <div *ngFor="let tempProduct of products" class="col-md-3 col-sm-6 col-xs-12">
                     <div class="product-box">
-
                         <a routerLink="/products/{{ tempProduct.id }}">
-                        <img src="{{ tempProduct.imageUrl }}" class="img-responsive">
-                    </a>
-
-                    <a routerLink="/products/{{ tempProduct.id }}">
-                        <h1>{{ tempProduct.name }}</h1>
-                    </a>
-                    
+                            <img src="{{ tempProduct.imageUrl }}" class="img-responsive product-image" alt="{{ tempProduct.name }}">
+                        </a>
+                        <a routerLink="/products/{{ tempProduct.id }}">
+                            <h5 class="product-name">{{ tempProduct.name }}</h5>
+                        </a>
                         <div class="price">{{ tempProduct.unitPrice | currency:'INR' }}</div>
-                        <button (click)="addToCart(tempProduct)" class="btn primary-btn btn-sm">Add to cart</button>
+                        <button (click)="addToCart(tempProduct)" class="btn primary-btn btn-sm">Add to Cart</button>
                     </div>
-
                 </div>
 
-                <!-- If The Products Array Is Empty Then Display A Message To The User-->
-                 <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
-                    No Products Found 
-                 </div>
+                <!-- If the products array is empty then display a message to the user -->
+                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    No Products Found
+                </div>
             </div>
 
-            <!-- Begin Footer-->
-             <div class="footer-pagination">
+            <!-- Begin Footer -->
+            <div class="footer-pagination">
                 <div class="row">
                     <div class="col-md-6"></div>
-
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-md-9" style="padding-left: 30%">
-
+                            <div class="col-md-9 pagination-container">
                                 <ngb-pagination [(page)]="thePageNumber"
                                                 [pageSize]="thePageSize"
                                                 [collectionSize]="theTotalElements"
                                                 [maxSize]="5"
                                                 [boundaryLinks]="true"
-                                                (pageChange)="listProducts()"
-                                                >
-
+                                                (pageChange)="listProducts()">
                                 </ngb-pagination>
                             </div>
 
-                            <div class="col-md-3 mt-2" style="text-align: right;">
+                            <div class="col-md-3 mt-2 page-size-container">
                                 <span class="mr-2">Page Size</span>
-                                <select #selectPageSize (change)="updatePageSize(selectPageSize.value)">
+                                <select #selectPageSize (change)="updatePageSize(selectPageSize.value)" class="page-size-select">
                                     <option>2</option>
                                     <option selected="true">5</option>
                                     <option>10</option>
@@ -64,9 +54,8 @@
                         </div>
                     </div>
                 </div>
-             </div>
-            <!-- end footer-->
-
+            </div>
+            <!-- End Footer -->
         </div>
     </div>
 </div>

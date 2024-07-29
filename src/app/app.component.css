@@ -1,0 +1,95 @@
+/* Hide scrollbar but still allow scrolling for Webkit browsers (Chrome, Safari, Opera) */
+.menu-sidebar {
+    overflow-y: scroll; /* Ensure scrolling is possible */
+}
+
+.menu-sidebar::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+
+/* Hide scrollbar but still allow scrolling for Firefox */
+.menu-sidebar {
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    scrollbar-width: none; /* For Firefox */
+}
+
+
+/* Logo Styling */
+.menu-sidebar .logo {
+    text-align: center; /* Center logo */
+    margin-bottom: 0px; /* Space below the logo */
+    background-color: #1e1e1e;
+    border: 2px solid #333;
+    height: 15%;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.menu-sidebar .logo img {
+    width: auto;
+    height: auto;
+    max-width: 70%; /* Ensure logo scales with sidebar width */
+    max-height: 80%;
+    object-fit: contain;
+    border-radius: 50%;
+    animation: rotate 10s linear infinite;
+}
+
+
+/* Header Styling */
+.header-desktop {
+    background-color: #1e1e1e; /* Dark background color */
+    color: #e0e0e0; /* Light text color for readability */
+    padding: 10px 20px; /* Padding for spacing */
+    border-bottom: 1px solid #444; /* Border to separate header from content */
+    height: 15%;
+    margin-bottom: 2px;
+}
+
+.header-wrap {
+    display: flex;
+    justify-content: space-between; /* Distribute space between items */
+    align-items: center; /* Center items vertically */
+}
+
+/* Adjust app components */
+header app-search,
+header app-login-status,
+header app-cart-status {
+    flex: 1; /* Flex to take available space */
+    margin: 0 10px; /* Margin for spacing between components */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-desktop {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .header-wrap {
+        flex-direction: column; /* Stack items vertically on small screens */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    header app-search,
+    header app-login-status,
+    header app-cart-status {
+        margin: 5px 0; /* Adjust margin for vertical stacking */
+    }
+
+    .account-wrap {
+        display: none; /* Hide additional account wrap for smaller screens */
+    }
+}
+
+
+
+
+
