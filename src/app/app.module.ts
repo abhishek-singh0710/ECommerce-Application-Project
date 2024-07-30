@@ -33,6 +33,7 @@ import { MembersPageComponent } from './components/members-page/members-page.com
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { RefundComponent } from './components/refund/refund.component';
+import { LazyLoadImageDirective } from './directives/lazy-load-image.directive';
 
 const oktaConfig = myAppConfig.oidc;
 
@@ -89,6 +90,7 @@ const routes: Routes = [
     MembersPageComponent,
     OrderHistoryComponent,
     RefundComponent,
+    LazyLoadImageDirective,
   ],
   imports: [
     RouterModule.forRoot(routes),

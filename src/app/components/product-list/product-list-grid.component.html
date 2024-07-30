@@ -9,7 +9,7 @@
                 <div *ngFor="let tempProduct of products" class="col-md-3 col-sm-6 col-xs-12">
                     <div class="product-box">
                         <a routerLink="/products/{{ tempProduct.id }}">
-                            <img src="{{ tempProduct.imageUrl }}" class="img-responsive product-image" alt="{{ tempProduct.name }}">
+                            <img appLazyLoadImage="{{ tempProduct.imageUrl }}" class="img-responsive product-image" alt="{{ tempProduct.name }}" loading="lazy">
                         </a>
                         <a routerLink="/products/{{ tempProduct.id }}">
                             <h5 class="product-name">{{ tempProduct.name }}</h5>
