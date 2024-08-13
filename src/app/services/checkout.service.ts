@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Purchase } from '../common/purchase';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { OrderItem } from '../common/order-item';
 
 declare var Razorpay: any;
 
@@ -13,11 +14,18 @@ export class CheckoutService {
 
   private purchaseUrl = environment.ecommerceApiUrl + "/checkout/purchase";
   private transactionUrl = "https://localhost:8443/api/checkout/createTransaction/";
+  private checkInInventoryUrl = "https://localhost:8443/api/inventory/getInventory";
 
   private modalResponseSubject = new Subject<any>();
   modalResponse = this.modalResponseSubject.asObservable();
 
   constructor(private httpClient: HttpClient) { }
+
+
+  checkInInventory(orderItems: OrderItem[]): Observable<any> {
+    return this.httpClient.post<OrderItem[]>(this.checkInInventoryUrl, orderItems);
+  }
+
 
   createTransaction(amount: number): Observable<any> {
     return this.httpClient.get<any>(this.transactionUrl + amount);

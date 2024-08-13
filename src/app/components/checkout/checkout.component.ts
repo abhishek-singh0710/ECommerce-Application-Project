@@ -25,6 +25,8 @@ export class CheckoutComponent implements OnInit {
 
   checkoutFormGroup!: FormGroup;
 
+  checkInInventory!: any;
+
   totalPrice: number = 0;
   totalQuantity: number = 0;
 
@@ -301,6 +303,12 @@ export class CheckoutComponent implements OnInit {
     //     }
     // })
 
+    this.checkInInventory = this.checkoutService.checkInInventory(orderItems).subscribe(
+      (response) => {
+        console.log(response);
+
+        if(response) {
+
     // First call the transaction API If Successfull Then Call The Purchase API
     this.checkoutService.createTransaction(this.totalPrice).subscribe(
       (response) => {
@@ -336,7 +344,14 @@ export class CheckoutComponent implements OnInit {
         console.log("Here Is The Error " + error);
       }
     )
+  } else {
+    alert("There is not enough stock for the items in your cart.\nPlease reduce the quantity of the items in your cart or remove the items with insufficient stock.");
   }
+  }
+)
+
+  }
+  
 
 
   resetCart() {

@@ -116,6 +116,7 @@ export class ProductListComponent implements OnInit {
                                                this.currentCategoryId)
                                                .subscribe(
                                                 data => {                                         // Instead of doing this can also call the processResult() Function since same thing is being done there
+                                                  console.log("data",data._embedded.products);
                                                   this.products = data._embedded.products;
                                                   this.thePageNumber = data.page.number +1;
                                                   this.thePageSize = data.page.size;

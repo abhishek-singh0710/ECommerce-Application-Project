@@ -15,7 +15,8 @@
                             <h5 class="product-name">{{ tempProduct.name }}</h5>
                         </a>
                         <div class="price">{{ tempProduct.unitPrice | currency:'INR' }}</div>
-                        <button (click)="addToCart(tempProduct)" class="btn primary-btn btn-sm">Add to Cart</button>
+                        <button *ngIf="tempProduct.unitsInStock > 0; else OutOfStock" (click)="addToCart(tempProduct)" class="btn primary-btn btn-sm">Add to Cart</button>
+                        <ng-template #OutOfStock class="btn primary-btn btn-sm">Out Of Stock</ng-template>
                     </div>
                 </div>
 
